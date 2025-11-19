@@ -2,144 +2,163 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Happy Birthday Sammar 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday — Sammar 🎉</title>
 <style>
     body {
         margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #000428, #004e92);
-        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #0f0f3d, #1a1a5e);
+        font-family: Arial, sans-serif;
         color: white;
-        overflow: hidden;
         text-align: center;
+        overflow-x: hidden;
     }
 
     h1 {
-        font-size: 50px;
-        margin-top: 50px;
-        animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-        from { text-shadow: 0 0 10px #ff0080; }
-        to { text-shadow: 0 0 30px #ff0080, 0 0 50px #ff0080; }
-    }
-
-    p {
-        font-size: 22px;
-    }
-
-    button {
-        padding: 10px 20px; 
-        font-size:18px; 
         margin-top: 20px;
-        cursor: pointer;
-        border-radius: 8px;
-        border: none;
-        background: linear-gradient(90deg,#ff4b5c,#ffb347);
-        color: white;
-        font-weight: bold;
+        font-size: 28px;
+        animation: fadeIn 2s ease-in-out;
     }
 
-    /* Floating Balloons */
+    #container {
+        margin-top: 20px;
+    }
+
     .balloon {
-        position: absolute;
-        bottom: -150px;
         width: 80px;
         height: 100px;
         border-radius: 50%;
-        animation: floatUp 8s infinite ease-in;
+        display: inline-block;
+        margin: 20px;
+        animation: float 3s infinite ease-in-out;
+        color: white;
+        font-weight: bold;
+        line-height: 100px;
+        font-size: 24px;
     }
 
-    @keyframes floatUp {
-        from { transform: translateY(0); opacity: 1; }
-        to { transform: translateY(-900px); opacity: 0; }
+    .balloon:nth-child(1) { background-color: pink; }
+    .balloon:nth-child(2) { background-color: lightblue; animation-duration: 4s; }
+    .balloon:nth-child(3) { background-color: lightgreen; animation-duration: 5s; }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
     }
 
-    /* Confetti */
-    .confetti {
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        top: -10px;
-        animation: fall 5s infinite linear;
+    #questionBox {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        margin: 30px auto;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        display: none;
+        animation: fadeIn 1s ease-in-out;
     }
 
-    @keyframes fall {
-        from { transform: translateY(0) rotate(0deg); }
-        to { transform: translateY(800px) rotate(360deg); }
+    select {
+        padding: 10px;
+        width: 80%;
+        border-radius: 5px;
+        margin-top: 10px;
     }
 
-    /* Floating Hearts */
-    .heart {
-        position: absolute;
-        bottom: -100px;
-        color: pink;
-        font-size: 30px;
-        animation: rise 6s infinite ease-in-out;
-    }
-    @keyframes rise {
-        from { transform: translateY(0) scale(1); opacity: 1; }
-        to { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    button {
+        padding: 10px 20px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        transition: 0.3s;
     }
 
-    /* Cake Styles */
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* Cake CSS (replaces image) */
     .cake {
-        position: relative;
-        width: 200px;
-        height: 150px;
-        margin: 30px auto 0 auto;
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 30px auto 50px auto;
+      display: none;
     }
 
     .layer {
-        position: absolute;
-        width: 200px;
-        height: 50px;
-        border-radius: 10px;
-        background: #ff9aa2;
-        left: 0;
+      position: absolute;
+      width: 200px;
+      height: 50px;
+      border-radius: 10px;
+      background: #ff9aa2;
+      left: 0;
     }
 
     .layer:nth-child(2) { top: 50px; background: #ffb7b2; }
     .layer:nth-child(3) { top: 100px; background: #ffdac1; }
 
     .candle {
-        position: absolute;
-        width: 15px;
-        height: 40px;
-        background: #fff;
-        top: -45px;
-        left: 92px;
-        border-radius: 5px;
+      position: absolute;
+      width: 15px;
+      height: 40px;
+      background: #fff;
+      top: -45px;
+      left: 92px;
+      border-radius: 5px;
     }
 
     .flame {
-        position: absolute;
-        width: 10px;
-        height: 20px;
-        background: gold;
-        top: -20px;
-        left: 95px;
-        border-radius: 50%;
-        animation: flicker 0.3s infinite alternate;
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      background: gold;
+      top: -20px;
+      left: 95px;
+      border-radius: 50%;
+      animation: flicker 0.3s infinite alternate;
     }
 
     @keyframes flicker {
       from {transform: scale(1); opacity: 0.8;}
       to {transform: scale(1.2); opacity: 1;}
     }
+
+    @keyframes popUp {
+        from { transform: scale(0); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
 </style>
 </head>
 <body>
 
-<h1>🎉 Happy Birthday Dear Sammar 🎂</h1>
-<p>Tum duniya ke sab se ache dost ho! 🎈💖</p>
-<button onclick="playMusic()">Start Surprise 🎶</button>
+<h1>🎂 Happy Birthday — Sammar! 🎉</h1>
+<p>Shuru karne ke liye Start dabao. Audio aur animations start honge.</p>
 
-<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
+<button onclick="startExperience()">Start 🎧</button>
 
-<!-- Cake -->
-<div class="cake">
+<div id="container">
+    <div class="balloon">S</div>
+    <div class="balloon">A</div>
+    <div class="balloon">M</div>
+</div>
+
+<div id="questionBox">
+    <h2 id="questionText"></h2>
+    <select id="answerSelect"></select><br />
+    <button onclick="nextQuestion()">Jawab Do</button>
+</div>
+
+<!-- CSS Cake -->
+<div class="cake" id="cake">
   <div class="layer"></div>
   <div class="layer"></div>
   <div class="layer"></div>
@@ -147,55 +166,67 @@
   <div class="flame"></div>
 </div>
 
+<audio id="bgAudio" preload="auto"></audio>
+
 <script>
-// Floating balloons
-function createBalloon() {
-    const balloon = document.createElement("div");
-    balloon.classList.add("balloon");
-    balloon.style.left = Math.random() * window.innerWidth + "px";
-    balloon.style.background = randomColor();
-    balloon.style.animationDuration = Math.random() * 5 + 5 + "s";
-    document.body.appendChild(balloon);
-    setTimeout(() => balloon.remove(), 8000);
-}
+    // Happy Birthday melody notes
+    function playHappyBirthday() {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [392,392,440,392,523,494,392,392,440,392,587,523,392,392,784,659,523,494,440,698,698,659,523,587,523];
+        const dur = 0.28;
+        let t = ctx.currentTime+0.2;
+        notes.forEach((n,i)=>{
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            o.type='sine';
+            o.frequency.value=n;
+            g.gain.value=0.07;
+            o.connect(g); g.connect(ctx.destination);
+            o.start(t+i*dur); o.stop(t+i*dur+dur*0.95);
+        });
+    }
 
-// Confetti
-function createConfetti() {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = Math.random() * window.innerWidth + "px";
-    confetti.style.top = "-10px";
-    confetti.style.background = randomColor();
-    confetti.style.animationDuration = Math.random() * 3 + 3 + "s";
-    document.body.appendChild(confetti);
-    setTimeout(() => confetti.remove(), 5000);
-}
+    const questions = [
+        { q: "Kitne saal ke ho gaye ho?", a: ["18", "19", "20", "21", "25+"] },
+        { q: "Future mein kya banna chahte ho?", a: ["Engineer", "Doctor", "Businessman", "YouTuber", "Developer"] },
+        { q: "Tumhari favourite hobby kya hai?", a: ["Cricket", "Gaming", "Coding", "Traveling"] },
+        { q: "Favourite color?", a: ["Blue", "Black", "Red", "Green"] },
+        { q: "Best friend ka naam?", a: ["Ali", "Ahmed", "Hassan", "Abdul Rehman"] }
+    ];
 
-// Floating hearts
-function createHearts() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.animationDuration = Math.random() * 4 + 4 + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-}
+    let currentQuestion = 0;
 
-// Random colors
-function randomColor() {
-    const colors = ["#ff4b5c", "#ffd700", "#9b59b6", "#00cec9", "#ff3f34"];
-    return colors[Math.floor(Math.random() * colors.length)];
-}
+    function startExperience() {
+        document.getElementById("questionBox").style.display = "block";
+        playHappyBirthday();
+        showQuestion();
+    }
 
-// Play Music and Start Animations
-function playMusic() {
-    const music = document.getElementById("music");
-    music.play();
-    setInterval(createBalloon, 600);
-    setInterval(createConfetti, 250);
-    setInterval(createHearts, 800);
-}
+    function showQuestion() {
+        const q = questions[currentQuestion];
+        document.getElementById("questionText").innerText = q.q;
+
+        const answerSelect = document.getElementById("answerSelect");
+        answerSelect.innerHTML = "";
+        q.a.forEach(answer => {
+            const option = document.createElement("option");
+            option.value = answer;
+            option.text = answer;
+            answerSelect.appendChild(option);
+        });
+    }
+
+    function nextQuestion() {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            document.getElementById("questionBox").style.display = "none";
+            const cake = document.getElementById("cake");
+            cake.style.display = "block";
+            cake.style.animation = "popUp 1s ease-in-out";
+        }
+    }
 </script>
 
 </body>
