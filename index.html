@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Happy Birthday Sammar 🎂</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #000428, #004e92);
+        font-family: 'Arial', sans-serif;
+        color: white;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 50px;
+        margin-top: 50px;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #ff0080; }
+        to { text-shadow: 0 0 30px #ff0080, 0 0 50px #ff0080; }
+    }
+
+    p {
+        font-size: 22px;
+    }
+
+    button {
+        padding: 10px 20px; 
+        font-size:18px; 
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(90deg,#ff4b5c,#ffb347);
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Floating Balloons */
+    .balloon {
+        position: absolute;
+        bottom: -150px;
+        width: 80px;
+        height: 100px;
+        border-radius: 50%;
+        animation: floatUp 8s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-900px); opacity: 0; }
+    }
+
+    /* Confetti */
+    .confetti {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: -10px;
+        animation: fall 5s infinite linear;
+    }
+
+    @keyframes fall {
+        from { transform: translateY(0) rotate(0deg); }
+        to { transform: translateY(800px) rotate(360deg); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+        position: absolute;
+        bottom: -100px;
+        color: pink;
+        font-size: 30px;
+        animation: rise 6s infinite ease-in-out;
+    }
+    @keyframes rise {
+        from { transform: translateY(0) scale(1); opacity: 1; }
+        to { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+
+    /* Cake Styles */
+    .cake {
+        position: relative;
+        width: 200px;
+        height: 150px;
+        margin: 30px auto 0 auto;
+    }
+
+    .layer {
+        position: absolute;
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+        background: #ff9aa2;
+        left: 0;
+    }
+
+    .layer:nth-child(2) { top: 50px; background: #ffb7b2; }
+    .layer:nth-child(3) { top: 100px; background: #ffdac1; }
+
+    .candle {
+        position: absolute;
+        width: 15px;
+        height: 40px;
+        background: #fff;
+        top: -45px;
+        left: 92px;
+        border-radius: 5px;
+    }
+
+    .flame {
+        position: absolute;
+        width: 10px;
+        height: 20px;
+        background: gold;
+        top: -20px;
+        left: 95px;
+        border-radius: 50%;
+        animation: flicker 0.3s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from {transform: scale(1); opacity: 0.8;}
+      to {transform: scale(1.2); opacity: 1;}
+    }
+</style>
+</head>
+<body>
+
+<h1>🎉 Happy Birthday Dear Sammar 🎂</h1>
+<p>Tum duniya ke sab se ache dost ho! 🎈💖</p>
+<button onclick="playMusic()">Start Surprise 🎶</button>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
+
+<!-- Cake -->
+<div class="cake">
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="candle"></div>
+  <div class="flame"></div>
+</div>
+
+<script>
+// Floating balloons
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.left = Math.random() * window.innerWidth + "px";
+    balloon.style.background = randomColor();
+    balloon.style.animationDuration = Math.random() * 5 + 5 + "s";
+    document.body.appendChild(balloon);
+    setTimeout(() => balloon.remove(), 8000);
+}
+
+// Confetti
+function createConfetti() {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.top = "-10px";
+    confetti.style.background = randomColor();
+    confetti.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+}
+
+// Floating hearts
+function createHearts() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = Math.random() * 4 + 4 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+
+// Random colors
+function randomColor() {
+    const colors = ["#ff4b5c", "#ffd700", "#9b59b6", "#00cec9", "#ff3f34"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Play Music and Start Animations
+function playMusic() {
+    const music = document.getElementById("music");
+    music.play();
+    setInterval(createBalloon, 600);
+    setInterval(createConfetti, 250);
+    setInterval(createHearts, 800);
+}
+</script>
+
+</body>
+</html>
